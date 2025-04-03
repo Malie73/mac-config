@@ -1,0 +1,84 @@
+function gitstart() {
+  if [ -z "$1" ]; then
+    echo "❌  Repo-Name fehlt. Nutzung: gitstart <repo-name> \"<commit-msg>\""
+    return 1
+  fi
+
+  local repo="$1"
+  local msg="${2:-Initial commit}"
+  local user="Malie73"  # <-- ggf. anpassen
+  local full_url="git@github.com:$user/$repo.git"
+
+  if [ -d ".git" ]; then
+    echo "📁  Git-Repo existiert bereits – überspringe git init."
+  else
+    echo "🚀  Initialisiere Git-Repo..."
+    git init || return 1
+  fi
+
+  echo "📦  Füge Dateien hinzu..."
+  git add . || return 1
+
+  echo "📝  Commit: $msg"
+  git commit -m "$msg" || return 1
+
+  echo "🔗  Setze Remote zu $full_url"
+  git remote remove origin 2>/dev/null
+  git remote add origin "$full_url" || return 1
+
+  echo "🔄  Setze Branch auf main"
+  git branch -M main
+
+  echo -n "⏫  Möchtest du nach GitHub pushen? (Y/n): "
+  read -r confirm
+  if [[ "$confirm" =~ ^([nN][oO]?|[nN])$ ]]; then
+    echo "🚫  Push abgebrochen."
+    return 0
+  fi
+
+  echo "⏫  Pushe nach GitHub..."
+  git push -u origin main || return 1
+
+  echo "✅  Alles erledigt! Dein Repo ist online 🎉"
+}
+alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
+alias ic='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
+
+alias ls='eza -a --icons --color=always --git'
+alias ll="eza --color=always --long --git --icons=always"
+alias lsg='eza -a --icons --color=always --git'
+alias lst='eza -a --tree --icons --color=always'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias c='clear'
+alias h='history'
+alias reload='source ~/.zshrc'
+
+
+alias e='nvim'       
+alias vim='nvim'
+alias vi='nvim'
+alias grep='grep --color=auto'
+alias df='df -h'
+alias du='du -h'
+alias t='tree -L 2'        
+alias brewup='brew update && brew upgrade'
+alias fuck='sudo $(fc -ln -1)'    
+alias wttr='curl wttr.in/magdeburg'
+
+alias myip='curl ifconfig.me'
+alias ports='lsof -i -P -n | grep LISTEN'
+
+alias gs='git status'
+alias ga='git add .'
+alias gc='git commit -m'
+alias gp='git push'
+alias gpl='git pull'
+alias gl='git log --oneline --graph --all'
+alias gd='git diff'
+alias gco='git checkout'
+alias gb='git branch'
+
+alias mc='TERM=xterm-256color command mc --nosubshell'
