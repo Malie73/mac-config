@@ -66,6 +66,8 @@ cask "cursor"
 cask "font-meslo-lg-nerd-font"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# Menu bar calendar
+cask "itsycal"
 # JetBrains tools manager
 cask "jetbrains-toolbox"
 # Menu bar manager
@@ -80,7 +82,11 @@ cask "microsoft-office"
 cask "obsidian"
 # System and utility switches
 cask "only-switch"
+# Desktop virtualization software
+cask "parallels"
 # Quit an app when closing the last window
 cask "redquits"
+# Video game digital distribution service
+cask "steam"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"

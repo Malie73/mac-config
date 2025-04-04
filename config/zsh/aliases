@@ -48,6 +48,7 @@ alias ls='eza -a --icons --color=always --git'
 alias ll="eza --color=always --long --git --icons=always"
 alias lsg='eza -a --icons --color=always --git'
 alias lst='eza -a --tree --icons --color=always'
+alias la='ls -la'
 
 alias ..='cd ..'
 alias ...='cd ../..'
